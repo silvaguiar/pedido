@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Quer sair comigo?</title>
+    <title>Marina Lobo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap"
@@ -46,7 +46,10 @@
             width: 400px;
             z-index: 10;
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; /* Added to constrain absolute elements */
+            overflow: hidden; /* Added to prevent escape */
         }
+
 
         .container:hover {
             transform: scale(1.02);
@@ -119,13 +122,14 @@
         #btn-nao {
             background-color: #e0e0e0;
             color: #666;
-            position: absolute;
+            position: absolute; /* Relative to .container now */
             left: 55%;
             top: 0;
             white-space: nowrap;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 1000;
         }
+
 
 
         /* Heart Animation */
@@ -207,7 +211,8 @@
 
         <div class="buttons-container">
             <button class="btn" id="btn-sim" onclick="celebrate()">SIM!</button>
-            <button class="btn" id="btn-nao" onmouseover="dodgeButton()" ontouchstart="dodgeButton()" onclick="dodgeButton()">NÃO</button>
+            <button class="btn" id="btn-nao" onmouseover="dodgeButton()" ontouchstart="dodgeButton()"
+                onclick="dodgeButton()">NÃO</button>
 
         </div>
     </div>
@@ -240,25 +245,21 @@
         function dodgeButton() {
             const btnNao = document.getElementById('btn-nao');
             const mainCard = document.getElementById('main-card');
-            const rect = mainCard.getBoundingClientRect();
             
-            // Define os limites dentro do quadro branco (main-card)
+            // Constrains the button within the main card using absolute positioning
             const margin = 20;
-            const xMin = rect.left + margin;
-            const yMin = rect.top + margin;
-            const xMax = rect.right - btnNao.offsetWidth - margin;
-            const yMax = rect.bottom - btnNao.offsetHeight - margin;
+            const xMax = mainCard.offsetWidth - btnNao.offsetWidth - margin;
+            const yMax = mainCard.offsetHeight - btnNao.offsetHeight - margin;
 
-            btnNao.style.position = 'fixed';
-            btnNao.style.zIndex = '1000';
+            // Picks a random spot within the container's bounds
+            const randomX = Math.floor(Math.random() * (xMax - margin)) + margin;
+            const randomY = Math.floor(Math.random() * (yMax - margin)) + margin;
             
-            // Sorteia uma posição aleatória dentro desses limites
-            const randomX = Math.floor(Math.random() * (xMax - xMin)) + xMin;
-            const randomY = Math.floor(Math.random() * (yMax - yMin)) + yMin;
-            
+            btnNao.style.position = 'absolute';
             btnNao.style.left = randomX + 'px';
             btnNao.style.top = randomY + 'px';
         }
+
 
 
         function celebrate() {
