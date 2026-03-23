@@ -74,8 +74,17 @@
         .gif-container img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
+            border: 5px solid white;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(255, 77, 109, 0.2);
+            transition: transform 0.3s ease;
         }
+
+        .gif-container img:hover {
+            transform: scale(1.05);
+        }
+
 
         .buttons-container {
             display: flex;
@@ -174,9 +183,12 @@
             width: 250px;
             height: 250px;
             margin-bottom: 20px;
-            border-radius: 20px;
-            object-fit: contain;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid white;
+            box-shadow: 0 10px 30px rgba(255, 77, 109, 0.4);
         }
+
     </style>
 </head>
 
@@ -186,10 +198,11 @@
     <div class="container" id="main-card">
         <h1>Promete passar o final de semana comigo?</h1>
         <div class="gif-container">
-            <!-- Using a cute placeholder/placeholder image -->
-            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHlxYzgxYnFmNWZ5bmR3ZGZ4NXA4ZjF4ZXl5ZXl5ZXl5ZXl5ZXl5ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L95W4M8pOgR16/giphy.gif"
-                alt="Cute Kitten/Love">
+            <!-- Usando a foto que você salvou como foto.jpeg -->
+            <img src="foto.jpeg" alt="Nossa Foto">
         </div>
+
+
         <div class="buttons-container">
             <button class="btn" id="btn-sim" onclick="celebrate()">SIM!</button>
             <button class="btn" id="btn-nao" onmouseover="dodgeButton()" ontouchstart="dodgeButton()">NÃO</button>
@@ -197,9 +210,9 @@
     </div>
 
     <div class="success-message" id="success-screen">
-        <img class="success-gif"
-            src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnJqMXkyYzhxYnM5eHB5bmR3ZGZ4NXA4ZjF4ZXl5ZXl5ZXl5ZXl5ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kZ1p8V8zTSk0M/giphy.gif"
-            alt="Celebration">
+        <img class="success-gif" src="foto.jpeg" alt="Celebration">
+
+
         <h2>Ebaaaa! ❤️</h2>
         <p>Duvido ter conseguido clicar no "não" haha</p>
     </div>
