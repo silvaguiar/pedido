@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Quer sair comigo?</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary-pink: #ff4d6d;
@@ -139,6 +141,7 @@
                 transform: translateY(0) rotate(0deg);
                 opacity: 0.8;
             }
+
             100% {
                 transform: translateY(-100vh) rotate(360deg);
                 opacity: 0;
@@ -176,14 +179,16 @@
         }
     </style>
 </head>
+
 <body>
     <div class="hearts-bg" id="hearts-bg"></div>
 
     <div class="container" id="main-card">
-        <h1>Quer sair comigo?</h1>
+        <h1>Promete passar o final de semana comigo?</h1>
         <div class="gif-container">
             <!-- Using a cute placeholder/placeholder image -->
-            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHlxYzgxYnFmNWZ5bmR3ZGZ4NXA4ZjF4ZXl5ZXl5ZXl5ZXl5ZXl5ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L95W4M8pOgR16/giphy.gif" alt="Cute Kitten/Love">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHlxYzgxYnFmNWZ5bmR3ZGZ4NXA4ZjF4ZXl5ZXl5ZXl5ZXl5ZXl5ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/L95W4M8pOgR16/giphy.gif"
+                alt="Cute Kitten/Love">
         </div>
         <div class="buttons-container">
             <button class="btn" id="btn-sim" onclick="celebrate()">SIM!</button>
@@ -192,9 +197,11 @@
     </div>
 
     <div class="success-message" id="success-screen">
-        <img class="success-gif" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnJqMXkyYzhxYnM5eHB5bmR3ZGZ4NXA4ZjF4ZXl5ZXl5ZXl5ZXl5ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kZ1p8V8zTSk0M/giphy.gif" alt="Celebration">
+        <img class="success-gif"
+            src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnJqMXkyYzhxYnM5eHB5bmR3ZGZ4NXA4ZjF4ZXl5ZXl5ZXl5ZXl5ZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kZ1p8V8zTSk0M/giphy.gif"
+            alt="Celebration">
         <h2>Ebaaaa! ❤️</h2>
-        <p>Sabia que você ia aceitar!</p>
+        <p>Duvido ter conseguido clicar no "não" haha</p>
     </div>
 
     <script>
@@ -206,7 +213,7 @@
             heart.style.animationDuration = Math.random() * 3 + 3 + 's';
             heart.style.fontSize = Math.random() * 10 + 15 + 'px';
             document.getElementById('hearts-bg').appendChild(heart);
-            
+
             setTimeout(() => {
                 heart.remove();
             }, 6000);
@@ -217,24 +224,24 @@
         function dodgeButton() {
             const btnNao = document.getElementById('btn-nao');
             const container = document.querySelector('.buttons-container');
-            
+
             // Get viewport dimensions
             const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
             const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-            
+
             // Generate random positions within the screen, keeping comfort margins
             // we use absolute positioning relative to body when it starts moving? 
             // Better: move it randomly across the whole screen.
-            
+
             btnNao.style.position = 'fixed';
-            
+
             const btnRect = btnNao.getBoundingClientRect();
             const maxX = vw - btnRect.width - 20;
             const maxY = vh - btnRect.height - 20;
-            
+
             const randomX = Math.floor(Math.random() * maxX);
             const randomY = Math.floor(Math.random() * maxY);
-            
+
             btnNao.style.left = randomX + 'px';
             btnNao.style.top = randomY + 'px';
         }
@@ -242,12 +249,13 @@
         function celebrate() {
             document.getElementById('main-card').style.display = 'none';
             document.getElementById('success-screen').style.display = 'flex';
-            
+
             // Trigger extra hearts
-            for(let i = 0; i < 50; i++) {
+            for (let i = 0; i < 50; i++) {
                 setTimeout(createHeart, i * 50);
             }
         }
     </script>
 </body>
+
 </html>
