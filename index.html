@@ -239,28 +239,27 @@
 
         function dodgeButton() {
             const btnNao = document.getElementById('btn-nao');
-            const container = document.querySelector('.buttons-container');
-
-            // Get viewport dimensions
-            const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-            const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
-
-            // Generate random positions within the screen, keeping comfort margins
-            // we use absolute positioning relative to body when it starts moving? 
-            // Better: move it randomly across the whole screen.
+            const mainCard = document.getElementById('main-card');
+            const rect = mainCard.getBoundingClientRect();
+            
+            // Define os limites dentro do quadro branco (main-card)
+            const margin = 20;
+            const xMin = rect.left + margin;
+            const yMin = rect.top + margin;
+            const xMax = rect.right - btnNao.offsetWidth - margin;
+            const yMax = rect.bottom - btnNao.offsetHeight - margin;
 
             btnNao.style.position = 'fixed';
-
-            const btnRect = btnNao.getBoundingClientRect();
-            const maxX = vw - btnRect.width - 20;
-            const maxY = vh - btnRect.height - 20;
-
-            const randomX = Math.floor(Math.random() * maxX);
-            const randomY = Math.floor(Math.random() * maxY);
-
+            btnNao.style.zIndex = '1000';
+            
+            // Sorteia uma posição aleatória dentro desses limites
+            const randomX = Math.floor(Math.random() * (xMax - xMin)) + xMin;
+            const randomY = Math.floor(Math.random() * (yMax - yMin)) + yMin;
+            
             btnNao.style.left = randomX + 'px';
             btnNao.style.top = randomY + 'px';
         }
+
 
         function celebrate() {
             document.getElementById('main-card').style.display = 'none';
