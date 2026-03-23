@@ -122,13 +122,14 @@
         #btn-nao {
             background-color: #e0e0e0;
             color: #666;
-            position: absolute; /* Relative to .container now */
-            left: 55%;
-            top: 0;
+            position: absolute; /* Relative to #main-card now */
+            right: 40px;
+            bottom: 40px;
             white-space: nowrap;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 1000;
         }
+
 
 
 
@@ -211,10 +212,9 @@
 
         <div class="buttons-container">
             <button class="btn" id="btn-sim" onclick="celebrate()">SIM!</button>
-            <button class="btn" id="btn-nao" onmouseover="dodgeButton()" ontouchstart="dodgeButton()"
-                onclick="dodgeButton()">NÃO</button>
-
         </div>
+        <button class="btn" id="btn-nao" onmouseover="dodgeButton()" ontouchstart="dodgeButton()" onclick="dodgeButton()">NÃO</button>
+
     </div>
 
     <div class="success-message" id="success-screen">
