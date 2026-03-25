@@ -213,7 +213,7 @@
         <div class="buttons-container">
             <button class="btn" id="btn-sim" onclick="celebrate()">SIM!</button>
         </div>
-        <button class="btn" id="btn-nao" onmouseover="dodgeButton()" ontouchstart="dodgeButton()" onclick="dodgeButton()">NÃO</button>
+        <button class="btn" id="btn-nao" onmouseover="dodgeButton()" ontouchstart="dodgeButton()">NÃO</button>
 
     </div>
 
@@ -246,16 +246,21 @@
             const btnNao = document.getElementById('btn-nao');
             const mainCard = document.getElementById('main-card');
             
-            // Constrains the button within the main card using absolute positioning
+            // Margem para o botão não colar nas bordas
             const margin = 20;
+            
+            // Calcula os limites máximos dentro do card
             const xMax = mainCard.offsetWidth - btnNao.offsetWidth - margin;
             const yMax = mainCard.offsetHeight - btnNao.offsetHeight - margin;
 
-            // Picks a random spot within the container's bounds
+            // Gera uma posição totalmente aleatória dentro do card para o botão "fugir"
             const randomX = Math.floor(Math.random() * (xMax - margin)) + margin;
             const randomY = Math.floor(Math.random() * (yMax - margin)) + margin;
             
+            // Corrige o bug de esticar: reseta right/bottom e usa left/top
             btnNao.style.position = 'absolute';
+            btnNao.style.right = 'auto'; // Importante para não esticar o botão
+            btnNao.style.bottom = 'auto'; // Importante para não esticar o botão
             btnNao.style.left = randomX + 'px';
             btnNao.style.top = randomY + 'px';
         }
